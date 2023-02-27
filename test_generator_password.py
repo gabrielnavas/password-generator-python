@@ -45,8 +45,8 @@ class TestPasswordGenerator(unittest.TestCase):
                 result = make_one_lowercase_letter()
                 self.assertRegex(result, regex)
 
-    def test_make_one_number_range_ascii_97_122(self):
-        ord_range = list(range(97, 123))
+    def test_make_one_number_range_ascii_48_57(self):
+        ord_range = list(range(48, 58))
 
         for i in range(100):
             with self.subTest(i=i):

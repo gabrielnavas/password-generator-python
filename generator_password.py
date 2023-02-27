@@ -24,5 +24,5 @@ def make_one_lowercase_letter():
 
 
 def make_one_number():
-    number = randint(97, 122)
+    number = randint(48, 57)
     return number
