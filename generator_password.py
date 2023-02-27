@@ -26,3 +26,9 @@ def make_one_lowercase_letter():
 def make_one_number():
     number = randint(48, 57)
     return number
+
+
+def make_password(length: int = 4):
+    assert length >= 4, 'length should be great than 4'
+    assert length <= 1000, 'length should be great than 4'
+    return None

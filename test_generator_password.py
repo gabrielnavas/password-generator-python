@@ -1,7 +1,10 @@
 import unittest
 import re
-from generator_password import make_one_special_char, make_one_uppercase_letter, make_one_lowercase_letter, \
-    make_one_number
+from generator_password import make_one_special_char, \
+    make_one_uppercase_letter, \
+    make_one_lowercase_letter, \
+    make_one_number, \
+    make_password
 
 
 class TestMakeOneSpecialChar(unittest.TestCase):
@@ -42,6 +45,15 @@ class TestMakeOneNumber(unittest.TestCase):
             with self.subTest(i=i):
                 result = make_one_number()
                 self.assertIn(result, ord_range)
+
+
+class TestPasswordLength(unittest.TestCase):
+    values_min_max = [3, 1001]
+
+    def test_make_password_length(self):
+        for length in self.values_min_max:
+            with self.assertRaises(AssertionError):
+                make_password(length=length)
 
 
 if __name__ == '__main__':
