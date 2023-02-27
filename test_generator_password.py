@@ -16,7 +16,7 @@ Funções
 
 import unittest
 import re
-from generator_password import make_one_special_char, make_one_uppercase_letter, make_one_lowercase_letter
+from generator_password import make_one_special_char, make_one_uppercase_letter, make_one_lowercase_letter, make_one_number
 
 
 class TestPasswordGenerator(unittest.TestCase):
@@ -43,7 +43,13 @@ class TestPasswordGenerator(unittest.TestCase):
             with self.subTest(i=i):
                 result = make_one_lowercase_letter()
                 self.assertRegex(result, regex)
+    def test_make_one_number_range_ascii_97_122(self):
+        ord_range = list(range(97, 123))
 
+        for i in range(100):
+            with self.subTest(i=i):
+                result = make_one_number()
+                self.assertIn(result, ord_range)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
