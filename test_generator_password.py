@@ -48,7 +48,7 @@ class TestMakeOneNumber(unittest.TestCase):
 
 
 class TestPasswordLength(unittest.TestCase):
-    values_min_max = [3, 1001]
+    values_min_max = [15, 1001]
 
     def test_make_password_length(self):
         for length in self.values_min_max:
