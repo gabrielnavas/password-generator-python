@@ -10,3 +10,7 @@ def make_one_special_char():
     ]
     ascii_int = choice(ranges)
     return chr(ascii_int)
+
+def make_one_uppercase_letter():
+    ascii_int = randint(65, 90)
+    return chr(ascii_int)

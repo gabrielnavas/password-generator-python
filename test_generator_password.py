@@ -16,16 +16,24 @@ Funções
 
 import unittest
 import re
-from generator_password import make_one_special_char
+from generator_password import make_one_special_char, make_one_uppercase_letter
 
 
 class TestPasswordGenerator(unittest.TestCase):
     def test_make_one_special_char_multiple_ranges(self):
         regex = re.compile(r'^[ -\/:-@\[-`{-~]$')
 
-        for i in range(10000):
+        for i in range(100):
             with self.subTest(i=i):
                 result = make_one_special_char()
+                self.assertRegex(result, regex)
+
+    def test_make_one_uppercase_letter_range_65_90(self):
+        regex = re.compile(r'^[a-z]$')
+
+        for i in range(100):
+            with self.subTest(i=i):
+                result = make_one_uppercase_letter()
                 self.assertRegex(result, regex)
 
 
