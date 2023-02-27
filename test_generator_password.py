@@ -9,7 +9,7 @@ from generator_password import make_one_special_char, \
 
 class TestMakeOneSpecialChar(unittest.TestCase):
     def test_make_one_special_char_multiple_ranges(self):
-        regex = re.compile(r'^[ -\/:-@\[-`{-~]$')
+        regex = re.compile(r'^[ -/:-@\[-`{-~]$')
 
         for i in range(100):
             with self.subTest(i=i):
@@ -54,6 +54,10 @@ class TestPasswordLength(unittest.TestCase):
         for length in self.values_min_max:
             with self.assertRaises(AssertionError):
                 make_password(length=length)
+
+    def test_make_password_string(self):
+        with self.assertRaises(AssertionError):
+            make_password(length='a')
 
 
 if __name__ == '__main__':

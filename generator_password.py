@@ -29,6 +29,7 @@ def make_one_number():
 
 
 def make_password(length: int = 4):
+    assert isinstance(length, int), 'length is not int'
     assert length >= 4, 'length should be great than 4'
     assert length <= 1000, 'length should be great than 4'
     return None
