@@ -14,3 +14,7 @@ def make_one_special_char():
 def make_one_uppercase_letter():
     ascii_int = randint(65, 90)
     return chr(ascii_int)
+
+def make_one_lowercase_letter():
+    ascii_int = randint(97, 122)
+    return chr(ascii_int)
