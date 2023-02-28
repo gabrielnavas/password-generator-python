@@ -25,11 +25,31 @@ def make_one_lowercase_letter():
 
 def make_one_number():
     number = randint(48, 57)
-    return number
+    return chr(number)
 
 
-def make_password(length: int = 16):
+def make_password(length: int = 16, chars: bool = True, upper: bool = True, lower: bool = True, numbers: bool = True) -> str:
     assert isinstance(length, int), 'length is not int'
     assert length >= 16, 'length should be great than 4'
     assert length <= 1000, 'length should be great than 4'
-    return None
+
+    new_password = []
+    while len(new_password) < length:
+        chars and new_password.append(str(make_one_special_char()))
+        if len(new_password) >= length:
+            break
+
+        upper and new_password.append(str(make_one_uppercase_letter()))
+        if len(new_password) >= length:
+            break
+
+        lower and new_password.append(str(make_one_lowercase_letter()))
+        if len(new_password) >= length:
+            break
+
+        numbers and new_password.append(str(make_one_number()))
+        if len(new_password) >= length:
+            break
+
+    new_password_formatted = ''.join(new_password)
+    return new_password_formatted

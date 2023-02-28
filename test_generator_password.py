@@ -44,7 +44,7 @@ class TestMakeOneNumber(unittest.TestCase):
         for i in range(100):
             with self.subTest(i=i):
                 result = make_one_number()
-                self.assertIn(result, ord_range)
+                self.assertIn(ord(result), ord_range)
 
 
 class TestPasswordLength(unittest.TestCase):
@@ -58,6 +58,17 @@ class TestPasswordLength(unittest.TestCase):
     def test_make_password_string(self):
         with self.assertRaises(AssertionError):
             make_password(length='a')
+
+
+class TestMakeAllParamsTrue(unittest.TestCase):
+    def test_make_password_all_params_true(self):
+        regex = re.compile(
+            r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).*$'
+        )
+        length_default = 16
+        result = make_password()
+        self.assertRegex(result, regex)
+        self.assertEqual(len(result), length_default)
 
 
 if __name__ == '__main__':
